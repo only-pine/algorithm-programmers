@@ -1,13 +1,11 @@
 function solution(sizes) {
-    let maxWidth = 0;
-    let maxHeight = 0;
+    const array = sizes.map(([a, b]) => (a >= b) ? [a, b] : [b, a]);
     
-    for (const [width, height] of sizes) {
-        let maxValue = Math.max(width, height);
-        let minValue = Math.min(width, height);
-        
-        maxWidth = Math.max(maxWidth, maxValue);
-        maxHeight = Math.max(maxHeight, minValue);
+    let maxWidth = 0, maxHeight = 0;
+    
+    for (const [width, height] of array) {
+        maxWidth = Math.max(maxWidth, width);
+        maxHeight = Math.max(maxHeight, height);
     }
     
     return maxWidth * maxHeight;
